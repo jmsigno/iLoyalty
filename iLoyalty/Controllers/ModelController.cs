@@ -148,36 +148,6 @@ namespace iLoyalty.Controllers
             ViewBag.msg = name + "model created!";
             return View(cblist);
         }
-        /*
-        [HttpPost]
-        public IActionResult Index(CBoxList cblist, string name)
-        {
-            //try
-            //{
-                StringBuilder _schema = new StringBuilder();
-                foreach (var item in cblist.cboxlist)
-                {
-                    if (item.isChecked)
-                    {
-                        _schema.Append(item.boxName + ", ");
-                    }
-                }
-
-            var client = BigQueryClient.Create("iloyalty");
-            string mlConfig = "model_type = 'LOGISTIC_REG', auto_class_weights = TRUE, input_label_cols =['churn'], max_iterations = 50";
-            string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db."+name+"` OPTIONS ("+mlConfig+") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
-            //string sql = @"CREATE MODEL `iloyalty.telco_db." + modelName + "` OPTIONS ("+mlConfig+") AS SELECT " +_schema+ " churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
-            client.ExecuteQuery(sql, parameters: null);
-            //}
-            //catch(Exception e)
-            //{
-            //    ViewBag.msg = e.Message.ToString();
-            //    return View(cblist);
-            //}
-            ViewBag.msg = name + "model created!";
-            return View(cblist);
-        }
-        */
         public IActionResult DataSet()
         {
             bigQModels = new List<BigQModel>();

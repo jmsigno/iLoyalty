@@ -1,0 +1,42 @@
+﻿@model List<iLoyalty.Models.BigQModel>
+@{
+    ViewData["Title"] = "DataSet";
+}
+<div class="container row p-0 m-0">
+    <div class="col-8">
+        <h2 class="text-info">Data Sets</h2>
+    </div>
+    <div class="col-12 border p-3" div style="height: 600px; overflow: auto;">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>phone_number</th>
+                    <th>state</th>
+                    <th>account_length</th>
+                    <th>area_code</th>
+                    <th>international_plan</th>
+                    <th>voice_mail_plan</th>
+                    <th>number_vmail_messages</th>
+                    <th>customer_service_calls</th>
+                    <th>churn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@customer.phone</td>
+                        <td>@customer.state</td>
+                        <td>@customer.acctLength</td>
+                        <td>@customer.areaCode</td>
+                        <td>@customer.intlPlan</td>
+                        <td>@customer.vmPlan</td>
+                        <td>@customer.vmailMsg</td>
+                        <td>@customer.custServCalls</td>
+                        <td>@customer.churn</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

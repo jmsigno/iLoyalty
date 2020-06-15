@@ -396,3 +396,4 @@ C:\Users\Jordan\source\repos\iLoyalty\iLoyalty\bin\Debug\netcoreapp3.1\System.Te
 C:\Users\Jordan\source\repos\iLoyalty\iLoyalty\obj\Debug\netcoreapp3.1\iLoyalty.csproj.CoreCompileInputs.cache
 C:\Users\Jordan\source\repos\iLoyalty\iLoyalty\obj\Debug\netcoreapp3.1\iLoyalty.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Jordan\source\repos\iLoyalty\iLoyalty\obj\Debug\netcoreapp3.1\iLoyalty.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Jordan\source\repos\iLoyalty\iLoyalty\obj\Debug\netcoreapp3.1\Razor\Views\DashBoard\Index.cshtml.g.cs

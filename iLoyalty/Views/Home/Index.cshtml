@@ -1,19 +1,44 @@
-﻿@{
+﻿@*@model iLoyalty.Models.ModelList*@
+@{
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="container m-0 p-0">
-        <div class="border-bottom mb-5 mt-2">
-            <h1 class="display-4">iLoyalty Systems</h1>
-            <p>A machine learning based customer retention system.</p>
+<div class="container m-0 p-0">
+    <div class="border-bottom mb-5 mt-2">
+        <h1 class="display-4">iLoyalty Systems</h1>
+        <p>A machine learning based customer retention system.</p>
+    </div>
+    <!--
+    <h4 class="text-info">DASHBOARD</h4>
+    <div class="row border p-3">
+
+        <div class="col-6">
+            <h5 class="text-info">Prediction Panel</h5>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                <div>
+                    @*@Html.DropDownListFor(m => m.List, Model.List, "--Select Model--")*@
+                </div>
+                <div>
+                    <input type="submit" value="GET PREDICTIONS" class="btn btn-success" />
+                </div>
+                <div>
+                    <h4 class="text-info">@ViewBag.predictMsg</h4>
+                </div>
+            }
         </div>
-        <h4 class="text-info">DASHBOARD</h4>
-        <div class="row border p-3">
-            <div class="col-6">
-                <h5 class="text-info">Prediction Panel</h5>
-            </div>
-            <div class="col-6">
-                <h5 class="text-info">Predicted Customers</h5>
-            </div>
+        <div class="col-6">
+            <h5 class="text-info">Predicted Customers</h5>
         </div>
     </div>
+        -->
+</div>
+
+@*<select id="Select1">
+        <option value="" selected disabled>--Select Model--</option>
+        @for (var i = 0; i < Model.modelList.Count; i++)
+        {
+            <option>@(Model.modelList[i].model_name)</option>
+        }
+    </select>*@

@@ -14,8 +14,6 @@ namespace iLoyalty.Controllers
     public class ModelController : Controller
     {
         private List<BigQModel> bigQModels;
-
-        
         public IActionResult Index()
         {
             List<CBoxes> cb = new List<CBoxes>()

@@ -104,22 +104,6 @@ namespace iLoyalty.Controllers
             return View(cbl);
         }
 
-        //[HttpPost]
-        //public IActionResult Index(CBoxList cblist, string name)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    foreach (var item in cblist.cboxlist)
-        //    {
-        //        if (item.isChecked)
-        //        {
-        //            sb.Append(item.boxName + "', '");
-        //        }
-        //    }
-        //    ViewBag.name = name;
-        //    ViewBag.msg = sb + " " + name; 
-        //    return View(cblist);
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Index(CBoxList cblist, string name)
         {
@@ -137,7 +121,6 @@ namespace iLoyalty.Controllers
             var client = await BigQueryClient.CreateAsync("iloyalty");
             string mlConfig = "model_type = 'LOGISTIC_REG', auto_class_weights = TRUE, input_label_cols =['churn'], max_iterations = 50";
             string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db."+name+"` OPTIONS ("+mlConfig+") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
-            //string sql = @"CREATE MODEL `iloyalty.telco_db." + modelName + "` OPTIONS ("+mlConfig+") AS SELECT " +_schema+ " churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
             await client.ExecuteQueryAsync(sql, parameters: null);
             }
             catch(Exception e)
@@ -202,5 +185,23 @@ namespace iLoyalty.Controllers
             return Json(new { data = bigQResults.ToList()});
         }
         #endregion
+
+        //[HttpPost]
+        //public IActionResult Index(CBoxList cblist, string name)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    foreach (var item in cblist.cboxlist)
+        //    {
+        //        if (item.isChecked)
+        //        {
+        //            sb.Append(item.boxName + "', '");
+        //        }
+        //    }
+        //    ViewBag.name = name;
+        //    ViewBag.msg = sb + " " + name; 
+        //    return View(cblist);
+        //}
     }
 }
+
+

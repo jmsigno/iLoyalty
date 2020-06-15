@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using iLoyalty.Models;
+using Google.Cloud.BigQuery.V2;
 
 namespace iLoyalty.Controllers
 {
@@ -20,8 +21,25 @@ namespace iLoyalty.Controllers
 
         public IActionResult Index()
         {
+
+
             return View();
         }
+
+        private List<MLModel> getModels()
+        {
+            List<MLModel> allmodels = new List<MLModel>();
+
+            var client = BigQueryClient.Create("iloyalty");
+            string sql = @"SELECT * from `iloyalty.telco_db.models`";
+
+
+
+
+            return allmodels;
+        }
+
+
 
         public IActionResult Privacy()
         {

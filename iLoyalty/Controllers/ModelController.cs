@@ -103,7 +103,7 @@ namespace iLoyalty.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(CBoxList cblist, string name)
+        public async Task<IActionResult> Index(CBoxList cblist, string name, string creator)
         {
             try
             {
@@ -116,10 +116,19 @@ namespace iLoyalty.Controllers
                     }
                 }
 
-            var client = await BigQueryClient.CreateAsync("iloyalty");
-            string mlConfig = "model_type = 'LOGISTIC_REG', auto_class_weights = TRUE, input_label_cols =['churn'], max_iterations = 50";
-            string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db."+name+"` OPTIONS ("+mlConfig+") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
-            await client.ExecuteQueryAsync(sql, parameters: null);
+                var client = await BigQueryClient.CreateAsync("iloyalty");
+                string mlConfig = "model_type = 'LOGISTIC_REG', auto_class_weights = TRUE, input_label_cols =['churn'], max_iterations = 50";
+                string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db."+name+"` OPTIONS ("+mlConfig+") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
+                await client.ExecuteQueryAsync(sql, parameters: null);
+
+                string sql2 = @"SELECT * from `iloyalty.telco_db.models`";
+                var result2 = await client.ExecuteQueryAsync(sql2, parameters: null);
+
+                int count = result2.Count();
+                string sql3 = @"INSERT INTO `iloyalty.telco_db.models` Values(6, 'p_model_1', 'devRekt','5/24/2020', null, null)";
+
+
+
             }
             catch(Exception e)
             {

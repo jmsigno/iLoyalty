@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OXFdSDm+e7j/OBhR5wRS3ewT7op8a+J1SSkJm0DylILdQstx7xd3og6waDfZhIqNvq/e5J8ZV2CPW+1IpGrl7w==",
+  "dgSpecHash": "3ma1g+ieqcBlK5n5r9+JhEB7GYkt12603v2IBY/i14huA3/a23F09CI/KhbkNZaHk4x3KC4HmnQGoRWgs4rbNA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jordan\\source\\repos\\iLoyalty\\iLoyalty\\iLoyalty.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\Jordan\\.nuget\\packages\\google.apis.bigquery.v2\\1.46.0.1969\\google.apis.bigquery.v2.1.46.0.1969.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\google.apis.core\\1.46.0\\google.apis.core.1.46.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\google.cloud.bigquery.v2\\2.0.0\\google.cloud.bigquery.v2.2.0.0.nupkg.sha512",
+    "C:\\Users\\Jordan\\.nuget\\packages\\jquery\\1.12.4\\jquery.1.12.4.nupkg.sha512",
+    "C:\\Users\\Jordan\\.nuget\\packages\\jquery.ui.combined\\1.12.1\\jquery.ui.combined.1.12.1.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.5\\microsoft.aspnetcore.mvc.razor.extensions.3.1.5.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.5\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.5.nupkg.sha512",

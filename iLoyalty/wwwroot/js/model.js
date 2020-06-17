@@ -1,6 +1,7 @@
 ﻿var dataTable;
 
 $(document).ready(function () {
+    loadDatePicker();
     loadDataTable();
 });
 
@@ -31,5 +32,15 @@ function loadDataTable() {
             "emptyTable": "no data found"
         },
         "width": "100%"
+    });
+}
+
+function loadDatePicker() {
+    $('.datepicker').datepicker({
+        dateFormat:'dd-M-yy',
+        changeMonth: true,
+        changeYear: true,
+        showOn: "button",
+        buttonText:'<span class="fa fa-calendar fa-2x" aria-hidden="true" style="color:darkgray;"></span>'
     });
 }

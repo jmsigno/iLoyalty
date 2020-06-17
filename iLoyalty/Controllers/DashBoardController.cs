@@ -19,29 +19,63 @@ namespace iLoyalty.Controllers
         [HttpPost]
         public IActionResult Index(int id)
         {
+            int modelID = 6;
             string name = "";
             string creator = "";
             string date = "";
+
+            string precision = "";
+            string recall = "";
+            string accuracy = "";
+            string f1_score = "";
+            string log_loss = "";
+            string roc_auc = "";
+
             var client = BigQueryClient.Create("iloyalty");
 
-            string namesql = @"SELECT model_name, creator, date_created from `iloyalty.telco_db.models` WHERE id="+id+"";
+            if (id > 0)
+            {
+                modelID = id;
+            }
+
+            string namesql = @"SELECT model_name, creator, date_created from `iloyalty.telco_db.models` WHERE id="+modelID+"";
             var nameResult = client.ExecuteQuery(namesql, parameters: null);
             foreach (var row in nameResult)
             {
                 name = row["model_name"].ToString();
                 creator = row["creator"].ToString();
                 date = row["date_created"].ToString();
-
                 break;
             }
 
-            string sql = @"UPDATE `iloyalty.telco_db.default_model` SET model_id="+id+", model_name='"+name+"' WHERE id=0";
+            string sql = @"UPDATE `iloyalty.telco_db.default_model` SET model_id="+modelID+ ", model_name='"+name+"' WHERE id=0";
             var results = client.ExecuteQuery(sql, parameters: null);
-            
-            ViewBag.SelectedModelID = id;
+
+            string evalSql = @"SELECT * FROM ML.EVALUATE(MODEL `telco_db."+name+"`)";
+            var evalResult = client.ExecuteQuery(evalSql, parameters: null);
+            foreach (var row in evalResult)
+            {
+                precision = row["precision"].ToString();
+                recall = row["recall"].ToString();
+                accuracy = row["accuracy"].ToString();
+                f1_score = row["f1_score"].ToString();
+                log_loss = row["log_loss"].ToString();
+                roc_auc = row["roc_auc"].ToString();
+                break;
+            }
+
+            ViewBag.SelectedModelID = modelID;
             ViewBag.SelectedModelName = name;
             ViewBag.SelectedModelCreator = creator;
             ViewBag.SelectedModelDate = date;
+
+            ViewBag.precision = precision;
+            ViewBag.recall = recall;
+            ViewBag.accuracy = accuracy;
+            ViewBag.f1_score = f1_score;
+            ViewBag.log_loss = log_loss;
+            ViewBag.roc_auc = roc_auc;
+
             return View(getDdl());
         }
 

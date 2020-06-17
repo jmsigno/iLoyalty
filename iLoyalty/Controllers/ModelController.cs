@@ -108,6 +108,13 @@ namespace iLoyalty.Controllers
             try
             {
                 StringBuilder _schema = new StringBuilder();
+                string precision = "";
+                string recall = "";
+                string accuracy = "";
+                string f1_score = "";
+                string log_loss = "";
+                string roc_auc = "";
+
                 foreach (var item in cblist.cboxlist)
                 {
                     if (item.isChecked)
@@ -118,17 +125,43 @@ namespace iLoyalty.Controllers
 
                 var client = await BigQueryClient.CreateAsync("iloyalty");
                 string mlConfig = "model_type = 'LOGISTIC_REG', auto_class_weights = TRUE, input_label_cols =['churn'], max_iterations = 50";
-                string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db."+name+"` OPTIONS ("+mlConfig+") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
+                string sql = @"CREATE OR REPLACE MODEL `iloyalty.telco_db." + name + "` OPTIONS (" + mlConfig + ") AS SELECT " + _schema + "churn FROM `iloyalty.telco_db.test_view3` WHERE dataframe = 'training'";
                 await client.ExecuteQueryAsync(sql, parameters: null);
 
-                string sql2 = @"SELECT * from `iloyalty.telco_db.models`";
+                string sql2 = @"SELECT MAX(id) from `iloyalty.telco_db.models`";
                 var result2 = await client.ExecuteQueryAsync(sql2, parameters: null);
 
-                int count = result2.Count();
-                string sql3 = @"INSERT INTO `iloyalty.telco_db.models` Values(6, 'p_model_1', 'devRekt','5/24/2020', null, null)";
+                int count = 0; 
 
+                foreach (var row in result2)
+                {
+                    count = (int)(long)row["f0_"];
+                    count++;
+                    break;
+                }
+                    
+                DateTime today = DateTime.Today;
+                string sql3 = @"INSERT INTO `iloyalty.telco_db.models` Values("+count+", '"+name+"', '"+creator+"','"+today+"', null, null)";
+                await client.ExecuteQueryAsync(sql3, parameters: null);
 
-
+                string evalSql = @"SELECT * FROM ML.EVALUATE(MODEL `telco_db."+name+"`)";
+                var evalResult = await client.ExecuteQueryAsync(evalSql, parameters: null);
+                foreach (var row in evalResult)
+                {
+                    precision = row["precision"].ToString();
+                    recall = row["recall"].ToString();
+                    accuracy = row["accuracy"].ToString();
+                    f1_score = row["f1_score"].ToString();
+                    log_loss = row["log_loss"].ToString();
+                    roc_auc = row["roc_auc"].ToString();
+                    break;
+                }
+                ViewBag.precision = precision;
+                ViewBag.recall = recall;
+                ViewBag.accuracy = accuracy;
+                ViewBag.f1_score = f1_score;
+                ViewBag.log_loss = log_loss;
+                ViewBag.roc_auc = roc_auc;
             }
             catch(Exception e)
             {

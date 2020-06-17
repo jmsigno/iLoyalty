@@ -3,6 +3,7 @@
 $(document).ready(function () {
     loadDatePicker();
     loadDataTable();
+    loadFrenchToast();
 });
 
 function loadDataTable() {
@@ -44,3 +45,48 @@ function loadDatePicker() {
         buttonText:'<span class="fa fa-calendar fa-2x" aria-hidden="true" style="color:darkgray;"></span>'
     });
 }
+
+function loadFrenchToast() {
+    $('#info').click(function (event) {
+        toastr.info('This may take a while...', "Creating Model",
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "500",
+                "hideDuration": "1000",
+                "timeOut": "9999",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            })
+    });
+
+    $('.toaster').load(function (event) {
+        toastr.info('This may take a while...', "Creating Model",
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "500",
+                "hideDuration": "1000",
+                "timeOut": "9999",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            })
+    });
+}
+ 

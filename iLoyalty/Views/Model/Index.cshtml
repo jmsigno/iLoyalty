@@ -3,8 +3,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h2 class="text-info">Build Machine Learning Model</h2>
-
+<div class="row">
+    <div class="col-10">
+        <h2 class="text-info">Prediction Results</h2>
+    </div>
+    <div class="col-2">
+        <a asp-controller="DashBoard" asp-action="Index" class="btn btn-danger form-control text-white">Back</a>
+    </div>
+</div>
 @using (Html.BeginForm())
 {
     <div class="container row p-0 m-0 border p-3">
@@ -24,7 +30,7 @@
             </div>
         </div>
         <div class="col-6 p-3">
-            <h5 class="text-info">Model Information</h5>
+            <h5 class="text-info">Information</h5>
             <hr />
             <div class="form-group">
                 <label class="text-secondary">Training Period</label>
@@ -37,11 +43,49 @@
                 <input type="text" name="creator" placeholder="Enter your name..." required="" class="form-control">
             </div>
             <div class="form-group">
-                <input type="submit" value="CREATE MODEL" class="btn btn-success" />
+                <input type="submit" id="info" value="CREATE MODEL" class="btn btn-success" />
             </div>
-            <div>
-                <h4 class="text-info">@ViewBag.msg</h4>
-            </div>
+            @if (@ViewBag.msg != null)
+            {
+                <p class="toaster"> Model successfully created!</p>
+                <div class="row" id="qwerty">
+                    <div class="col-12 p-3">
+                        <h5 onload="loadToast()" class="text-info">Evaluation Results</h5>
+                        <hr />
+                        <div>
+                            <label class="text-muted">Precision: </label>
+                            @ViewBag.precision
+                        </div>
+                        <div>
+                            <label class="text-muted">Recall: </label>
+                            @ViewBag.recall
+                        </div>
+                        <div>
+                            <label class="text-muted">Accuracy: </label>
+                            @ViewBag.accuracy
+                        </div>
+                        <div>
+                            <label class="text-muted">F1_Score: </label>
+                            @ViewBag.f1_score
+                        </div>
+                        <div>
+                            <label class="text-muted">log_loss: </label>
+                            @ViewBag.log_loss
+                        </div>
+                        <div>
+                            <label class="text-muted">roc_auc: </label>
+                            @ViewBag.roc_auc
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <h4 class="text-info toaster">@ViewBag.msg</h4>
+                </div>
+            }
+
         </div>
     </div>
 }

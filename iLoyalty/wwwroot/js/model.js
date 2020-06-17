@@ -1,27 +1,4 @@
-﻿function CreateModel(data) {
-    if (data.success) {
-        toastr.success(data.message); 8
-        dataTable.ajax.reload();
-    } else {
-        toastr.error(data.message);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-var dataTable;
+﻿var dataTable;
 
 $(document).ready(function () {
     loadDataTable();
@@ -30,20 +7,25 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#DT_load').DataTable({
         "ajax": {
-            "url": "/Model/getall/",
+            "url": "/DashBoard/predict/",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "phone_number" },
-            { "data": "state" },
-            { "data": "account_length"},
-            { "data": "area_code" },
-            { "data": "international_plan" },
-            { "data": "voice_mail_plan" },
-            { "data": "number_vmail_messages" },
-            { "data": "customer_service_calls" },
-            { "data": "churn" }
+            { "data": "name", "width": "16%" },
+            { "data": "address", "width": "16%" },
+            { "data": "phone_number", "width": "16%" },
+            { "data": "email", "width": "16%" },
+            { "data": "predicted_churn", "width": "10%" },
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `<div class="text-center">
+                    <a href="#" class='btn btn-success text-white p-1' style='cursor:pointer; width:80px;'> EMAIL</a>
+                    <a href="#" class='btn btn-info text-white p-1' style='cursor:pointer; width:80px;'>SMS</a>
+                    </div>`;
+                }, "width": "26%"
+            }
         ],
         "language": {
             "emptyTable": "no data found"
@@ -51,4 +33,3 @@ function loadDataTable() {
         "width": "100%"
     });
 }
-*/

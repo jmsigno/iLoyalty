@@ -1,44 +1,41 @@
-﻿@*@model iLoyalty.Models.ModelList*@
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="container m-0 p-0">
-    <div class="border-bottom mb-5 mt-2">
-        <h1 class="display-4">iLoyalty Systems</h1>
-        <p>A machine learning based customer retention system.</p>
-    </div>
-    <!--
-    <h4 class="text-info">DASHBOARD</h4>
-    <div class="row border p-3">
-
-        <div class="col-6">
-            <h5 class="text-info">Prediction Panel</h5>
-            <hr />
-            @using (Html.BeginForm())
-            {
-                <div>
-                    @*@Html.DropDownListFor(m => m.List, Model.List, "--Select Model--")*@
-                </div>
-                <div>
-                    <input type="submit" value="GET PREDICTIONS" class="btn btn-success" />
-                </div>
-                <div>
-                    <h4 class="text-info">@ViewBag.predictMsg</h4>
-                </div>
-            }
+<br />
+    <div class="container m-0 p-0">
+        <div class="row row align-items-end">
+            <div class="col-12">
+                <h1 class="display-4">iLoyalty Systems</h1>
+                <p>A machine learning based customer retention system.</p>
+            </div>
         </div>
-        <div class="col-6">
-            <h5 class="text-info">Predicted Customers</h5>
+        <hr />
+        <div class="row align-items-center" style="height:400px">
+            <div class="col-12">
+                <h4 class="text-secondary">Advance Studio 2 - Final Product</h4>
+                <p class="text-secondary">INT3516-B20-MA Advanced Studio #2 (Capstone)</p>
+            </div>
+        </div>
+
+        <div class="row align-content-center border" style="height:200px">
+            <div class="col-3">
+                <label class="text-body font-weight-bold">Research and Development</label>
+                <p class="text-info">Numa Dewan - 7200</p>
+                <p class="text-info">Sujata Maharjan - 7112</p>
+                <p class="text-info">Jordan SIgno - 7213</p>
+            </div>
+            <div class="col-3">
+                <label class="text-body font-weight-bold">Developed by</label>
+                <p class="text-info">JMSigno(devRekt)</p>
+            </div>
+            <div class="col-3">
+                <label class="text-body font-weight-bold">Advisor</label>
+                <p class="text-info">Roshan Weerasuriya</p>
+            </div>
+            <div class="col-3">
+                <label class="text-body font-weight-bold">Campus</label>
+                <p class="text-info">AIT - Melbourne</p>
+            </div>
         </div>
     </div>
-        -->
-</div>
 
-@*<select id="Select1">
-        <option value="" selected disabled>--Select Model--</option>
-        @for (var i = 0; i < Model.modelList.Count; i++)
-        {
-            <option>@(Model.modelList[i].model_name)</option>
-        }
-    </select>*@

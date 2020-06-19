@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\iLoyalty",
+    "\\iLoyalty\\Views",
+    "\\iLoyalty\\wwwroot\\lib\\jquery",
+    "\\iLoyalty\\wwwroot\\lib\\jquery\\dist"
   ],
+  "SelectedNode": "\\iLoyalty\\Views\\Shared",
   "PreviewInSolutionExplorer": false
 }
